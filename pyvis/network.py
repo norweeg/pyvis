@@ -551,15 +551,15 @@ class Network(object):
         Writes a static HTML file and saves it locally before opening.
 
         :param: name: the name of the html file to save as
-        :type name: str
+        :type name: PathLike
         """
-        print(name)
+        print(str(name))
         if notebook:
             self.write_html(name, open_browser=False,notebook=True)
+            return IFrame(name, width=self.width, height=self.height)
         else:
             self.write_html(name, open_browser=True)
-        if notebook:
-            return IFrame(name, width=self.width, height=self.height)
+    
 
     def prep_notebook(self,
                       custom_template=False, custom_template_path=None):
